@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,13 +23,13 @@ body {
 
 th,
 td {
-  text-align: left;
-  padding: 24px;
+  @apply p-2 text-left md:p-6;
 }
 
 tr {
   border-bottom: 1px solid #121b2e;
 }
+
 
 
 @layer utilities {
@@ -43,7 +44,19 @@ tr {
     inset: 0;
     padding: 2px; /* the border thickness */
     background: linear-gradient(to right, #d57c17, #956836);
-    mask: linear-gradient(#000 0 0) exclude,
+    mask:
+      linear-gradient(#000 0 0) exclude,
       linear-gradient(#000 0 0) content-box;
+  }
+
+  .overflow-x-auto {
+    overscroll-behavior-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;  
+    /* for Chrome, Safari, and Opera */
   }
 }

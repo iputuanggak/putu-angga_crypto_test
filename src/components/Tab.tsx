@@ -8,8 +8,8 @@ export default function Tabs({
   onSelect: (selectedTab: string) => void;
 }) {
   return (
-    <ul>
-      <li>
+    <div className="w-full overflow-x-auto">
+      <ul className="flex gap-0">
         {labelList.map((l, i) => (
           <Tab
             label={l}
@@ -18,8 +18,8 @@ export default function Tabs({
             onClick={() => onSelect(l)}
           />
         ))}
-      </li>
-    </ul>
+      </ul>
+    </div>
   );
 }
 
@@ -34,8 +34,8 @@ function Tab({
 }) {
   return (
     <button
-      className={`px-2 pt-2 space-y-2 font-bold hover:text-[#E5933A] w-16 ${
-        isActive && "text-[#E5933A]" 
+      className={`min-w-16 space-y-2 px-2 pt-2 font-bold hover:text-[#E5933A] ${
+        isActive && "text-[#E5933A]"
       }`}
       onClick={onClick}
     >

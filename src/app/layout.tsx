@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${roboto.className} antialiased`}>
         <TopBar />
-        <main className="w-10/12 mx-auto">{children}</main>
+        <main className="mx-4 lg:w-10/12 lg:mx-auto">{children}</main>
         <img src="/images/body-background.png" alt="" className="fixed -z-10 bottom-0 w-full"/>
       </body>
     </html>

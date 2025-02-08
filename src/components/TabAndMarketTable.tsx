@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import MarketTable from "./MarketTable";
+import MarketTable, { MarketTableMobile } from "./MarketTable";
 import { marketData } from "@/dummyData/marketData";
 import Tab from "./Tab";
 
@@ -31,6 +31,14 @@ export default function TabAndMarketTable() {
         onSelect={handleTabChange}
       />
       <MarketTable
+        dataList={
+          selected !== "Favorit"
+            ? data.filter((d) => d.tab === selected)
+            : data.filter((d) => d.favorite === true)
+        }
+        onStarClick={handleFavorite}
+      />
+        <MarketTableMobile
         dataList={
           selected !== "Favorit"
             ? data.filter((d) => d.tab === selected)

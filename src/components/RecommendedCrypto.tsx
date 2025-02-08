@@ -6,23 +6,24 @@ export default function RecommendedCrypto() {
   const recommendedCrypto = recommendedCryptoData;
 
   return (
-    <div className="grid grid-cols-4 gap-4">
-      {recommendedCrypto.map((rc, i) => (
-        <RecommendedCard
-          id={0}
-          pair={rc.pair}
-          price={rc.price}
-          valueChanges={rc.valueChanges}
-          volume={rc.volume}
-          dataForGraph={rc.dataForGraph}
-        />
-      ))}
+    <div className="w-full overflow-x-auto">
+      <div className="grid min-w-[1000px] grid-cols-4 gap-4">
+        {recommendedCrypto.map((rc, i) => (
+          <RecommendedCard
+            pair={rc.pair}
+            price={rc.price}
+            valueChanges={rc.valueChanges}
+            volume={rc.volume}
+            dataForGraph={rc.dataForGraph}
+            key={i}
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 type DashboardCardProps = {
-  id: number;
   pair: string;
   price: number;
   valueChanges: string;
@@ -38,20 +39,23 @@ function RecommendedCard({
   dataForGraph,
 }: DashboardCardProps) {
   return (
-    <div className="bg-[#121b2e] p-4 rounded-lg text-sm">
-      <div className="flex justify-between">
+    <div className="cursor-pointer rounded-lg bg-[#121b2e] p-4 text-sm hover:bg-[#121b2e]/70">
+      <div className="flex flex-col md:flex-row md:justify-between">
         <p className="text-sm">{pair}</p>
-        <LineChart data={dataForGraph} className="w-1/2 h-24" />
+        <LineChart
+          data={dataForGraph}
+          className="h-12 w-full md:h-24 md:w-1/2"
+        />
       </div>
-      <p className="font-bold text-xl">Rp {formatDigit(price)}</p>
+      <p className="text-xl font-bold">Rp {formatDigit(price)}</p>
       <div className="flex justify-between">
         <p
           className={
             valueChanges[0] === "+"
               ? "text-[#6EDC86]"
               : valueChanges[0] === "-"
-              ? "text-[#FF3B3B]"
-              : ""
+                ? "text-[#FF3B3B]"
+                : ""
           }
         >
           {valueChanges}
