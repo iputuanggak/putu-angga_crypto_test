@@ -20,8 +20,30 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+th,
+td {
+  text-align: left;
+  padding: 24px;
+}
+
+tr {
+  border-bottom: 1px solid #121b2e;
+}
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .border-gradient {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    padding: 2px; /* the border thickness */
+    background: linear-gradient(to right, #d57c17, #956836);
+    mask: linear-gradient(#000 0 0) exclude,
+      linear-gradient(#000 0 0) content-box;
   }
 }
